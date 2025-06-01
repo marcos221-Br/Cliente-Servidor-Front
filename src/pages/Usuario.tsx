@@ -15,6 +15,8 @@ function find(){
                 (document.getElementById('name') as HTMLInputElement).value = usuario.getNome();
                 (document.getElementById('email') as HTMLInputElement).value = usuario.getEmail();
                 (document.getElementById('email') as HTMLInputElement).disabled = true;
+            }else{
+                (document.getElementById('delete') as HTMLButtonElement).disabled = true;
             }
         })
     }
@@ -29,7 +31,33 @@ function voltar(){
 }
 
 function salvar(){
-    
+    usuario.setNome((document.getElementById('name') as HTMLInputElement).value);
+    usuario.setSenha((document.getElementById('password') as HTMLInputElement).value);
+    usuario.setEmail((document.getElementById('email') as HTMLInputElement).value);
+    if(usuario.getId() != 0){
+        usuarioController.updateUsuario(usuario).then((response) => {
+            if(response.status == 200){
+                alert("Usuário atualizado com sucesso!");
+                window.location.href = "/inicio";
+            }
+        })
+    }else{
+        usuarioController.createUsuario(usuario).then((response) => {
+            if(response.status == 201){
+                alert("Usuário criado com sucesso!");
+                window.location.href = "/";
+            }
+        })
+    }
+}
+
+function deletar(){
+    usuarioController.deleteUsuario().then((response) => {
+        if(response.status == 200){
+            alert("Usuário deletado com sucesso!");
+            window.location.href = "/";
+        }
+    })
 }
 
 function UsuarioPage(){
@@ -48,13 +76,14 @@ function UsuarioPage(){
                     <h1>Usuario</h1>
                     <form onSubmit={handleSubmit(() => salvar())}>
                         <label htmlFor="name">Nome</label>
-                        <input type="text" id="name" />
+                        <input type="text" id="name" required />
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" />
+                        <input type="email" id="email" required />
                         <label htmlFor="password">Senha</label>
-                        <input type="password" id="password" />
+                        <input type="password" id="password" required />
                         <button type="submit">Salvar</button>
                     </form>
+                    <button onClick={deletar} id="delete">Deletar</button>
                 </div>
             </main>
         </>

@@ -23,7 +23,7 @@ export class UsuarioController{
         return this.http.sendJson("/usuarios",'PUT',json);
     }
 
-    public deleteNote(){
-        return this.http.sendJson("/usuario",'DELETE');
+    public deleteUsuario(){
+        return this.http.sendJson("/usuarios",'DELETE');
     }
 }
