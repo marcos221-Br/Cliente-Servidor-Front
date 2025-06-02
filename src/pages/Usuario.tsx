@@ -15,8 +15,10 @@ function find(){
                 (document.getElementById('name') as HTMLInputElement).value = usuario.getNome();
                 (document.getElementById('email') as HTMLInputElement).value = usuario.getEmail();
                 (document.getElementById('email') as HTMLInputElement).disabled = true;
+                (document.getElementById('delete') as HTMLButtonElement).disabled = false;
+                (document.getElementById('delete') as HTMLButtonElement).addEventListener('click',deletar);
             }else{
-                (document.getElementById('delete') as HTMLButtonElement).disabled = true;
+                alert(response.response.data.mensagem);
             }
         })
     }
@@ -39,6 +41,8 @@ function salvar(){
             if(response.status == 200){
                 alert("Usuário atualizado com sucesso!");
                 window.location.href = "/inicio";
+            }else{
+                alert(response.response.data.mensagem);
             }
         })
     }else{
@@ -46,6 +50,8 @@ function salvar(){
             if(response.status == 201){
                 alert("Usuário criado com sucesso!");
                 window.location.href = "/";
+            }else{
+                alert(response.response.data.mensagem);
             }
         })
     }
@@ -56,6 +62,8 @@ function deletar(){
         if(response.status == 200){
             alert("Usuário deletado com sucesso!");
             window.location.href = "/";
+        }else{
+            alert(response.response.data.mensagem);
         }
     })
 }
@@ -83,7 +91,7 @@ function UsuarioPage(){
                         <input type="password" id="password" required />
                         <button type="submit">Salvar</button>
                     </form>
-                    <button onClick={deletar} id="delete">Deletar</button>
+                    <button id="delete" disabled>Deletar</button>
                 </div>
             </main>
         </>
