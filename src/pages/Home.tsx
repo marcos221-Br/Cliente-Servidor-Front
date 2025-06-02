@@ -1,4 +1,5 @@
 import { LoginController } from "../controllers/LoginController";
+import './Home.css';
 
 function logout(){
     let loginController = new LoginController();
@@ -9,7 +10,7 @@ function Home() {
     return (
         <>
             <header>
-                <button onClick={logout}>Logout</button>
+                <button className="secondary" onClick={logout}>Logout</button>
                 <ul>
                     <li>
                         <a href="/usuarios">Usuario</a>

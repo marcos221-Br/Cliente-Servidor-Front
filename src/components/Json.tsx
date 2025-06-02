@@ -2,7 +2,7 @@ import axios from "axios";
 
 export class HttpConection{
 
-    private url = 'http://localhost:20001/api';
+    private url = localStorage.getItem('api');
 
     public constructor(){
         
@@ -18,8 +18,10 @@ export class HttpConection{
         switch (type) {
             case 'GET':
                 result = axios.get(this.url + endpoint).then(function(response) {
+                    console.log(response);
                     return response;
                 }).catch(function(error){
+                    console.log(error);
                     if(error.status == 401){
                         window.location.href = "/";
                     }
@@ -29,8 +31,10 @@ export class HttpConection{
             
             case 'POST':
                 result = axios.post(this.url + endpoint,data).then(function(response) {
+                    console.log(response);
                     return response;
                 }).catch(function(error){
+                    console.log(error);
                     if(error.status == 401){
                         window.location.href = "/";
                     }
@@ -40,8 +44,10 @@ export class HttpConection{
             
             case 'PUT':
                 result = axios.put(this.url + endpoint,data).then(function(response) {
+                    console.log(response);
                     return response;
                 }).catch(function(error){
+                    console.log(error);
                     if(error.status == 401){
                         window.location.href = "/";
                     }
@@ -51,8 +57,10 @@ export class HttpConection{
 
             case 'DELETE':
                 result = axios.delete(this.url + endpoint).then(function(response) {
+                    console.log(response);
                     return response;
                 }).catch(function(error){
+                    console.log(error);
                     if(error.status == 401){
                         window.location.href = "/";
                     }

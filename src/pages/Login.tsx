@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Login } from "../models/Login";
 import { LoginController } from "../controllers/LoginController";
+import "./Login.css";
 
 function login(){
   let login = new Login();
@@ -14,6 +15,10 @@ function cadastrar(){
     window.location.href = "/usuarios";
 }
 
+function mudarIp(){
+    localStorage.setItem('api','http://' + prompt('URL e porta da API') + '/api');
+}
+
 function LoginPage() {
     var { handleSubmit } = useForm();
     sessionStorage.clear();
@@ -21,6 +26,7 @@ function LoginPage() {
     return (
         <main>
             <div id="login">
+                <button className="secondary" onClick={mudarIp}>Mudar API</button>
                 <h1>Login</h1>
                 <form onSubmit={handleSubmit(() => login())}>
                     <label htmlFor="username">Email</label>
@@ -30,7 +36,7 @@ function LoginPage() {
                     <br />
                     <button type="submit">Enviar</button>
                 </form>
-                <button onClick={cadastrar}>Cadastrar</button>
+                <button className="secondary" onClick={cadastrar}>Cadastrar</button>
             </div>
         </main>
     )

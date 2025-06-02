@@ -1,6 +1,7 @@
 import { Usuario } from "../models/Usuario";
 import { UsuarioController } from "../controllers/UsuarioController";
 import { useForm } from "react-hook-form";
+import './Usuario.css';
 
 let usuario = new Usuario();
 let usuarioController = new UsuarioController();
@@ -77,7 +78,7 @@ function UsuarioPage(){
     return (
         <>
             <header>
-                <button onClick={voltar}>Voltar</button>
+                <button className="secondary" onClick={voltar}>Voltar</button>
             </header>
             <main>
                 <div id="usuario">
@@ -91,7 +92,7 @@ function UsuarioPage(){
                         <input type="password" id="password" required />
                         <button type="submit">Salvar</button>
                     </form>
-                    <button id="delete" disabled>Deletar</button>
+                    <button className="danger" id="delete" disabled>Deletar</button>
                 </div>
             </main>
         </>
