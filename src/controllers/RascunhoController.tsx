@@ -9,8 +9,12 @@ export class RascunhoController{
         this.http = new HttpConection();
     }
 
-    public findRascunho(){
+    public findRascunhos(){
         return this.http.sendJson("/rascunhos",'GET');
+    }
+
+    public getRascunho(rascunhoId:any){
+        return this.http.sendJson("/rascunhos/" + rascunhoId, 'GET');
     }
 
     public createRascunho(rascunho:Rascunho){
@@ -23,7 +27,7 @@ export class RascunhoController{
         return this.http.sendJson("/rascunhos",'PUT',json);
     }
 
-    public deleteRascunho(){
-        return this.http.sendJson("/rascunhos",'DELETE');
+    public deleteRascunho(rascunhoId:any){
+        return this.http.sendJson("/rascunhos/" + rascunhoId,'DELETE');
     }
 }

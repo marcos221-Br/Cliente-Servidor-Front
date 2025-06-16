@@ -1,35 +1,77 @@
 import { useForm } from "react-hook-form";
+import './Rascunho.css';
+import { Rascunho } from "../models/Rascunho";
+import { RascunhoController } from "../controllers/RascunhoController";
+
+let rascunho = new Rascunho();
+let rascunhoController = new RascunhoController();
 
 function salvar(){
-    // usuario.setNome((document.getElementById('name') as HTMLInputElement).value);
-    // usuario.setSenha((document.getElementById('password') as HTMLInputElement).value);
-    // usuario.setEmail((document.getElementById('email') as HTMLInputElement).value);
-    // if(usuario.getId() != 0){
-    //     usuarioController.updateUsuario(usuario).then((response) => {
-    //         if(response.status == 200){
-    //             alert("Usuário atualizado com sucesso!");
-    //             window.location.href = "/inicio";
-    //         }else{
-    //             alert(response.response.data.mensagem);
-    //         }
-    //     })
-    // }else{
-    //     usuarioController.createUsuario(usuario).then((response) => {
-    //         if(response.status == 201){
-    //             alert("Usuário criado com sucesso!");
-    //             window.location.href = "/";
-    //         }else{
-    //             alert(response.response.data.mensagem);
-    //         }
-    //     })
-    // }
+    rascunho.setCorpo((document.getElementById('corpo') as HTMLTextAreaElement).value);
+    rascunho.setAssunto((document.getElementById('assunto') as HTMLInputElement).value);
+    rascunho.setEmailDestinatario((document.getElementById('email') as HTMLInputElement).value);
+    if((rascunho.getCorpo() == '') && (rascunho.getAssunto() == '') && (rascunho.getEmailDestinatario() == '')){
+        alert("Necessário preencher pelo menos 1 campo!");
+        return;
+    }
+    if(rascunho.getRascunhoId() != 0){
+        rascunhoController.updateRascunho(rascunho).then((response) => {
+            if(response.status == 200){
+                alert('Rascunho atualizado com sucesso!');
+                window.location.href = '/inicio';
+            }else{
+                alert(response.response.data.mensagem);
+            }
+        })
+    }else{
+        rascunhoController.createRascunho(rascunho).then((response) => {
+            if(response.status == 200){
+                alert('Rascunho criado com suesso!');
+                window.location.href = '/inicio';
+            }else{
+                alert(response.response.data.mensagem);
+            }
+        })
+    }
 }
 
 function voltar(){
     if(sessionStorage.getItem('token') != null){
         window.location.href = "/inicio";
+        sessionStorage.removeItem('rascunho');
     }else{
         window.location.href = "/";
+        sessionStorage.clear();
+    }
+}
+
+function deleteRascunho(){
+    rascunhoController.deleteRascunho(sessionStorage.getItem('rascunho')).then((response) => {
+        if(response.status == 200){
+            alert('Sucesso ao excluir o rascunho');
+            sessionStorage.removeItem('rascunho');
+            window.location.href = "/inicio";
+        }else{
+            alert(response.response.data.mensagem);
+        }
+    })
+
+}
+
+function load(){
+    if(sessionStorage.getItem('rascunho') != null){
+        rascunhoController.getRascunho(sessionStorage.getItem('rascunho')).then((response) => {
+            if(response.status == 200){
+                rascunho.setRascunhoId(response.data.rascunho.rascunhoId);
+                (document.getElementById("assunto") as HTMLInputElement).value = response.data.rascunho.assunto;
+                (document.getElementById('corpo') as HTMLTextAreaElement).value = response.data.rascunho.corpo;
+                (document.getElementById("email") as HTMLInputElement).value = response.data.rascunho.emailDestinatario;
+                (document.getElementById('delete') as HTMLButtonElement).disabled = false;
+                (document.getElementById('delete') as HTMLButtonElement).addEventListener('click', deleteRascunho);
+            }else{
+                alert(response.response.data.mensagem);
+            }
+        })
     }
 }
 
@@ -37,21 +79,23 @@ function RascunhoPage(){
 
     var { handleSubmit } = useForm();
 
+    load();
+
     return (
         <>
             <header>
                 <button className="secondary" onClick={voltar}>Voltar</button>
             </header>
             <main>
-                <div id="usuario">
-                    <h1>Usuario</h1>
+                <div id="rascunho">
+                    <h1>Rascunho</h1>
                     <form onSubmit={handleSubmit(() => salvar())}>
-                        <label htmlFor="name">Nome</label>
-                        <input type="text" id="name" required />
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" required />
-                        <label htmlFor="password">Senha</label>
-                        <input type="password" id="password" required />
+                        <label htmlFor="assunto">Assunto</label>
+                        <input type="text" id="assunto" />
+                        <label htmlFor="email">Email Destinatário</label>
+                        <input type="email" id="email" />
+                        <label htmlFor="corpo">Corpo</label>
+                        <textarea id="corpo" />
                         <button type="submit">Salvar</button>
                     </form>
                     <button className="danger" id="delete" disabled>Deletar</button>

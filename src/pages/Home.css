@@ -73,3 +73,7 @@ main {
     color: #333;
     font-size: 32px;
 }
+
+.rascunho{
+    display: flex;
+}

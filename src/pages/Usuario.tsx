@@ -30,6 +30,7 @@ function voltar(){
         window.location.href = "/inicio";
     }else{
         window.location.href = "/";
+        sessionStorage.clear();
     }
 }
 
