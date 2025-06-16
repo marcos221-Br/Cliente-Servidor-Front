@@ -5,6 +5,7 @@ import { HttpConection } from './components/Json';
 import UsuarioPage from './pages/Usuario';
 import Home from './pages/Home';
 import RascunhoPage from './pages/Rascunho';
+import EmailPage from './pages/Email';
 
 function setupHttp(){
   HttpConection.setHeader('Content-Type','application/json')
@@ -21,6 +22,7 @@ function App() {
           <Route path="/inicio" element={<Home />} />
           <Route path="/usuarios" element={<UsuarioPage />} />
           <Route path="/rascunhos" element={<RascunhoPage />} />
+          <Route path="/emails" element={<EmailPage />} />
         </Routes>
       </Router>
     </>

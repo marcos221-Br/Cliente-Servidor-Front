@@ -22,7 +22,7 @@ header button:hover {
 }
 
 /* Container central */
-#rascunho {
+#email {
     background: white;
     padding: 40px;
     border-radius: 12px;
@@ -31,13 +31,13 @@ header button:hover {
     text-align: start;
 }
 
-#rascunho h1 {
+#email h1 {
     margin-bottom: 24px;
     color: #333;
 }
 
 /* Reutilizando estilos de formulário */
-#rascunho label {
+#email label {
     display: block;
     margin: 12px 0 4px;
     text-align: left;
@@ -45,7 +45,7 @@ header button:hover {
     color: #444;
 }
 
-#rascunho input {
+#email input {
     width: 100%;
     padding: 10px;
     margin-bottom: 12px;
@@ -55,7 +55,7 @@ header button:hover {
     box-sizing: border-box;
 }
 
-#rascunho textarea {
+#email textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 12px;
@@ -66,7 +66,7 @@ header button:hover {
     resize: vertical;
 }
 
-#rascunho button[type="submit"] {
+#email button[type="submit"] {
     width: 100%;
     padding: 10px;
     margin-top: 12px;
@@ -79,11 +79,16 @@ header button:hover {
     transition: background 0.3s ease;
 }
 
-#rascunho button[type="submit"]:hover {
+#email button[type="submit"]:hover {
     background-color: #357abd;
 }
 
-#rascunho button.danger {
+#email button[type="submit"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+#email button.danger {
     width: 100%;
     padding: 10px;
     margin-top: 16px;
@@ -97,34 +102,25 @@ header button:hover {
     opacity: 1;
 }
 
-#rascunho button.danger:disabled {
+#email button.danger:disabled {
     cursor: not-allowed;
     opacity: 0.5;
 }
 
-#rascunho button.danger:hover:not(:disabled) {
+#email button.danger:hover:not(:disabled) {
     background-color: #c0392b;
 }
 
-#rascunho button.send {
+#email button.enviar:disabled {
     width: 100%;
     padding: 10px;
-    margin-top: 16px;
-    background-color: #45e73c;
-    color: white;
+    margin-top: 12px;
     border: none;
     border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease, opacity 0.3s ease;
-    opacity: 1;
-}
-
-#rascunho button.send:disabled {
+    background-color: #4a90e2;
+    color: white;
+    font-size: 16px;
+    transition: background 0.3s ease;
     cursor: not-allowed;
     opacity: 0.5;
-}
-
-#rascunho button.send:hover:not(:disabled) {
-    background-color: #2bc02d;
 }

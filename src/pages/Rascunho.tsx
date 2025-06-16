@@ -2,9 +2,11 @@ import { useForm } from "react-hook-form";
 import './Rascunho.css';
 import { Rascunho } from "../models/Rascunho";
 import { RascunhoController } from "../controllers/RascunhoController";
+import { EmailController } from "../controllers/EmailController";
 
 let rascunho = new Rascunho();
 let rascunhoController = new RascunhoController();
+let emailController = new EmailController();
 
 function salvar(){
     rascunho.setCorpo((document.getElementById('corpo') as HTMLTextAreaElement).value);
@@ -18,6 +20,7 @@ function salvar(){
         rascunhoController.updateRascunho(rascunho).then((response) => {
             if(response.status == 200){
                 alert('Rascunho atualizado com sucesso!');
+                sessionStorage.removeItem('rascunho');
                 window.location.href = '/inicio';
             }else{
                 alert(response.response.data.mensagem);
@@ -58,6 +61,16 @@ function deleteRascunho(){
 
 }
 
+function sendRascunho(){
+    emailController.sendRascunho(sessionStorage.getItem('rascunho')).then((response) => {
+        if(response.status == 200){
+            alert("Email enviado com sucesso!");
+            sessionStorage.removeItem('rascunho');
+            window.location.href = "/inicio";
+        }
+    })
+}
+
 function load(){
     if(sessionStorage.getItem('rascunho') != null){
         rascunhoController.getRascunho(sessionStorage.getItem('rascunho')).then((response) => {
@@ -68,6 +81,8 @@ function load(){
                 (document.getElementById("email") as HTMLInputElement).value = response.data.rascunho.emailDestinatario;
                 (document.getElementById('delete') as HTMLButtonElement).disabled = false;
                 (document.getElementById('delete') as HTMLButtonElement).addEventListener('click', deleteRascunho);
+                (document.getElementById('send') as HTMLButtonElement).disabled = false;
+                (document.getElementById('send') as HTMLButtonElement).addEventListener('click', sendRascunho);
             }else{
                 alert(response.response.data.mensagem);
             }
@@ -98,6 +113,7 @@ function RascunhoPage(){
                         <textarea id="corpo" />
                         <button type="submit">Salvar</button>
                     </form>
+                    <button className="send" id="send" disabled>Enviar</button>
                     <button className="danger" id="delete" disabled>Deletar</button>
                 </div>
             </main>
