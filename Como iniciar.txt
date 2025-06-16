@@ -1,0 +1,5 @@
+Necessário ter node instalado.
+
+Utilizar npm i para instalar módulos necessários.
+
+npm run start para iniciar a aplicação.

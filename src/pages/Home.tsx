@@ -15,6 +15,9 @@ function Home() {
                     <li>
                         <a href="/usuarios">Usuario</a>
                     </li>
+                    <li>
+                        <a href="/rascunhos">Rascunhos</a>
+                    </li>
                 </ul>
             </header>
             <main>
