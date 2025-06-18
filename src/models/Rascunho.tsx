@@ -1,23 +1,13 @@
 export class Rascunho {
 
-    private rascunhoId:number;
     private assunto:string;
     private emailDestinatario:string;
     private corpo:string;
 
     public constructor(){
-        this.rascunhoId = 0;
         this.assunto = '';
         this.emailDestinatario = '';
         this.corpo = '';
-    }
-
-    public getRascunhoId():number{
-        return this.rascunhoId;
-    }
-
-    public setRascunhoId(rascunhoId:number){
-        this.rascunhoId = rascunhoId;
     }
 
     public getAssunto():string{

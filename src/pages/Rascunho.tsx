@@ -7,6 +7,7 @@ import { EmailController } from "../controllers/EmailController";
 let rascunho = new Rascunho();
 let rascunhoController = new RascunhoController();
 let emailController = new EmailController();
+let rascunhoId = 0;
 
 function salvar(){
     rascunho.setCorpo((document.getElementById('corpo') as HTMLTextAreaElement).value);
@@ -16,8 +17,8 @@ function salvar(){
         alert("Necessário preencher pelo menos 1 campo!");
         return;
     }
-    if(rascunho.getRascunhoId() != 0){
-        rascunhoController.updateRascunho(rascunho).then((response) => {
+    if(rascunhoId != 0){
+        rascunhoController.updateRascunho(rascunhoId, rascunho).then((response) => {
             if(response.status == 200){
                 alert('Rascunho atualizado com sucesso!');
                 sessionStorage.removeItem('rascunho');
@@ -75,7 +76,7 @@ function load(){
     if(sessionStorage.getItem('rascunho') != null){
         rascunhoController.getRascunho(sessionStorage.getItem('rascunho')).then((response) => {
             if(response.status == 200){
-                rascunho.setRascunhoId(response.data.rascunho.rascunhoId);
+                rascunhoId = response.data.rascunho.rascunhoId;
                 (document.getElementById("assunto") as HTMLInputElement).value = response.data.rascunho.assunto;
                 (document.getElementById('corpo') as HTMLTextAreaElement).value = response.data.rascunho.corpo;
                 (document.getElementById("email") as HTMLInputElement).value = response.data.rascunho.emailDestinatario;

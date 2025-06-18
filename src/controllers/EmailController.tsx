@@ -14,7 +14,7 @@ export class EmailController{
     }
 
     public getEmail(emailId:any){
-        return this.http.sendJson("/emails/" + emailId, 'PUT');
+        return this.http.sendJson("/emails/" + emailId, 'GET');
     }
 
     public createEmail(rascunho:Email){

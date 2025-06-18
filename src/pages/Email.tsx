@@ -62,7 +62,7 @@ function EmailPage(){
                     <form onSubmit={handleSubmit(() => salvar())}>
                         <label htmlFor="assunto">Assunto</label>
                         <input type="text" id="assunto" required/>
-                        {email.getEmailId() != 0 ? <label htmlFor="emailField">Email Remetente</label> : <label htmlFor="emailField">Email Destinatário</label>}
+                        <label htmlFor="emailField">Email Destinatário</label>
                         <input type="email" id="emailField" required/>
                         <label htmlFor="corpo">Corpo</label>
                         <textarea id="corpo" required/>

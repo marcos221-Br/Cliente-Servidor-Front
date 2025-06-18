@@ -22,9 +22,9 @@ export class RascunhoController{
         return this.http.sendJson("/rascunhos",'POST',json);
     }
 
-    public updateRascunho(rascunho:Rascunho){
+    public updateRascunho(rascunhoId:number, rascunho:Rascunho){
         let json = JSON.stringify(rascunho);
-        return this.http.sendJson("/rascunhos",'PUT',json);
+        return this.http.sendJson("/rascunhos/" + rascunhoId,'PUT',json);
     }
 
     public deleteRascunho(rascunhoId:any){

@@ -1,23 +1,13 @@
 export class Email {
 
-    private emailId:number;
     private assunto:string;
     private emailDestinatario:string;
     private corpo:string;
 
     public constructor(){
-        this.emailId = 0;
         this.assunto = '';
         this.emailDestinatario = '';
         this.corpo = '';
-    }
-
-    public getEmailId():number{
-        return this.emailId;
-    }
-
-    public setEmailId(emailId:number){
-        this.emailId = emailId;
     }
 
     public getAssunto():string{
