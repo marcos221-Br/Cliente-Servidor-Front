@@ -124,3 +124,26 @@ header button:hover {
     cursor: not-allowed;
     opacity: 0.5;
 }
+
+#email button.send {
+    width: 100%;
+    padding: 10px;
+    margin-top: 16px;
+    background-color: #45e73c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+#email button.send:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+#email button.send:hover:not(:disabled) {
+    background-color: #2bc02d;
+}
