@@ -1,0 +1,57 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#usuariosLogados {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+#usuariosLogados h1 {
+    margin-bottom: 24px;
+    color: #333;
+}
+
+#usuariosLogados button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#usuariosLogados button.secondary {
+    background-color: transparent;
+    color: #4a90e2;
+    border: 2px solid #4a90e2;
+    margin-top: 8px;
+}
+
+#usuariosLogados button.secondary:hover {
+    background-color: #4a90e2;
+    color: white;
+}

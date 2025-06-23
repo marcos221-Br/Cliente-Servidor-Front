@@ -31,4 +31,8 @@ export class LoginController{
             }
         })
     }
+
+    public logged(){
+        return this.http.sendJson('/logged', 'GET');
+    }
 }

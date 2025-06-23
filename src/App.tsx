@@ -6,6 +6,7 @@ import UsuarioPage from './pages/Usuario';
 import Home from './pages/Home';
 import RascunhoPage from './pages/Rascunho';
 import EmailPage from './pages/Email';
+import UsuariosLogadosPage from './pages/UsuariosLogados';
 
 function setupHttp(){
   HttpConection.setHeader('Content-Type','application/json')
@@ -23,6 +24,7 @@ function App() {
           <Route path="/usuarios" element={<UsuarioPage />} />
           <Route path="/rascunhos" element={<RascunhoPage />} />
           <Route path="/emails" element={<EmailPage />} />
+          <Route path="/usuarioslogados" element={<UsuariosLogadosPage />} />
         </Routes>
       </Router>
     </>

@@ -19,6 +19,10 @@ function mudarIp(){
     localStorage.setItem('api','http://' + prompt('URL e porta da API') + '/api');
 }
 
+function usuariosLogados(){
+    window.location.href = "/usuarioslogados";
+}
+
 function LoginPage() {
     var { handleSubmit } = useForm();
     sessionStorage.clear();
@@ -26,6 +30,7 @@ function LoginPage() {
     return (
         <main>
             <div id="login">
+                <button className="secondary" onClick={usuariosLogados}>Usuários Logados</button>
                 <button className="secondary" onClick={mudarIp}>Mudar API</button>
                 <h1>Login</h1>
                 <form onSubmit={handleSubmit(() => login())}>
