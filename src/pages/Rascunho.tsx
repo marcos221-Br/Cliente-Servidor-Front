@@ -24,7 +24,7 @@ function salvar(){
                 sessionStorage.removeItem('rascunho');
                 window.location.href = '/inicio';
             }else{
-                alert(response.response.data.mensagem);
+                alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
             }
         })
     }else{
@@ -33,7 +33,7 @@ function salvar(){
                 alert('Rascunho criado com suesso!');
                 window.location.href = '/inicio';
             }else{
-                alert(response.response.data.mensagem);
+                alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
             }
         })
     }
@@ -56,7 +56,7 @@ function deleteRascunho(){
             sessionStorage.removeItem('rascunho');
             window.location.href = "/inicio";
         }else{
-            alert(response.response.data.mensagem);
+            alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
         }
     })
 
@@ -85,7 +85,7 @@ function load(){
                 (document.getElementById('send') as HTMLButtonElement).disabled = false;
                 (document.getElementById('send') as HTMLButtonElement).addEventListener('click', sendRascunho);
             }else{
-                alert(response.response.data.mensagem);
+                alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
             }
         })
     }

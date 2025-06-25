@@ -44,7 +44,7 @@ function salvar(){
                 alert("Usuário atualizado com sucesso!");
                 window.location.href = "/inicio";
             }else{
-                alert(response.response.data.mensagem);
+                alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
             }
         })
     }else{
@@ -53,7 +53,7 @@ function salvar(){
                 alert("Usuário criado com sucesso!");
                 window.location.href = "/";
             }else{
-                alert(response.response.data.mensagem);
+                alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
             }
         })
     }
@@ -65,7 +65,7 @@ function deletar(){
             alert("Usuário deletado com sucesso!");
             window.location.href = "/";
         }else{
-            alert(response.response.data.mensagem);
+            alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
         }
     })
 }

@@ -17,7 +17,7 @@ function salvar(){
             alert('Email criado com suesso!');
             window.location.href = '/inicio';
         }else{
-            alert(response.response.data.mensagem);
+            alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
         }
     })
 }
@@ -61,7 +61,7 @@ function load(){
                 (document.getElementById('send') as HTMLButtonElement).disabled = false;
                 (document.getElementById('send') as HTMLButtonElement).addEventListener('click', responderEmail);
             }else{
-                alert(response.response.data.mensagem);
+                alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
             }
         })
     }

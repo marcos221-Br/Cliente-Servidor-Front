@@ -54,7 +54,7 @@ function Home() {
                 }))
                 setRascunhoRequestList(metadata);
             }else{
-                alert(response.response.data.mensagem);
+                alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
             }
         })
     }
@@ -72,7 +72,7 @@ function Home() {
                 }))
                 setEmailRequestList(metadata);
             }else{
-                alert(response.response.data.mensagem);
+                alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
             }
         })
     }

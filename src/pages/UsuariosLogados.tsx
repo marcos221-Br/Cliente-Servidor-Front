@@ -18,7 +18,7 @@ function UsuariosLogadosPage() {
                 let usuarios:[] = response.data.mensagem;
                 setUsuariosRequestList(usuarios);
             }else{
-                alert(response.response.data.mensagem);
+                alert("mesangem: " + response.response.data.mensagem + "\nerro: " + response.response.data.mensagem);
             }
         })
     }
